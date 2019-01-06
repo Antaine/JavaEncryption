@@ -33,7 +33,7 @@ public class CosineDistance extends Calculations {
 				sortedMap1.put(tempWord,sortedMap1.get(tempWord)+1);
 				if(list == 0)
 				{
-					sortedMap1.put(tempWord,sortedMap1.get(tempWord)+1);
+					//sortedMap1.put(tempWord,sortedMap1.get(tempWord)+1);
 					
 					//occurences1[j] +=1;
 				}
@@ -119,7 +119,9 @@ public class CosineDistance extends Calculations {
 	//	System.out.println("Complete Sorted Map 1 "+sortedMap1);
 	//	System.out.println("Words 2 " + sortedMap2);
 	//	System.out.println("Complete Sorted Map 2 " +sortedMap22);
-		CalculateDot(totalLength, sortedMap1,sortedMap22,sortedMap11,sortedMap2);
+		
+		
+		CosineDistance.CalculateDot(totalLength, sortedMap1,sortedMap22,sortedMap11,sortedMap2);
 		
 		
 		return null;

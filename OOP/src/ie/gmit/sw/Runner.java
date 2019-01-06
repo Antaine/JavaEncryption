@@ -46,22 +46,22 @@ public class Runner {
 		System.out.print(query + "\n");
 		
 	
-		words = new Parser().parse("./Input/WarAndPeace-LeoTolstoy.txt");	
+		words = new Parser().parse("./Input/"+direct);	
 	//	System.out.println("Words1: " + Arrays.toString(words));
 		shingle1 = new ConvertShingles().convertShingles(words);
 		shingleLength = shingle1.size();
 	//	System.out.println("Shingle1  " +shingle1);
 		queue = new Que().createQue(shingle1,shingleLength);
-	//	System.out.println("Queue1 " +queue);
+		//System.out.println("Queue1 " +queue);
 		//----------------------------------------------------------
 		map1 = new Mapping().mapShingle(shingleLength,queue);
 		//cloneMap = map1;
 		//System.out.println("Clone Map " + cloneMap);
-		//System.out.println("Map 1" + map1);
+	//	System.out.println("Map 1" + map1);
 		sortedMap1 = new CosineDistance().countUniqueWords(map1,shingleLength);
 	//	System.out.println("Sorted Map 1" + sortedMap1);
 		//----------------------------------------------------------
-		words = new Parser().parse("./Input/"+query+".txt");
+		words = new Parser().parse("./Input/"+query);
 	//	System.out.println("");
 	//	System.out.println(Arrays.toString(words));
 		shingle2 = new ConvertShingles().convertShingles(words);

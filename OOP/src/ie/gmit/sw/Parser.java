@@ -3,8 +3,6 @@ package ie.gmit.sw;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Parser {
 	//private ArrayList<String> al = new ArrayList<String>();
@@ -26,7 +24,7 @@ public class Parser {
 		//Parse File
 			while((line = br.readLine()) != null)
 			{
-				line= line.toUpperCase().replaceAll("[^A-za-z0-9\\s\\w\\-\\n]", "");
+				line= line.toLowerCase().replaceAll("[^A-za-z0-9\\s\\w\\-\\n]", "");
 				testLine += line;
 			}
 			

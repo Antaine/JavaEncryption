@@ -29,7 +29,7 @@ public class Mapping extends Thread {
 	
 	public LinkedHashMap<Integer, String> mapShingle(int length,BlockingQueue <String>queue) throws InterruptedException
 	{
-		//map.clear();
+		map.clear();
 		id =0;
 		q = null;
 		//System.out.println("Map Queue " + queue);
