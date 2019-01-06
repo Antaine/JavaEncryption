@@ -1,11 +1,25 @@
 package ie.gmit.sw;
-
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.math.*;
 
 public class Calculations {
 
+	/**
+	 * @author Antaine Ó Conghaile
+	 * @param length
+	 * @param sorted1
+	 * @param sorted2
+	 * @param words1
+	 * @param words2
+	 * Gets the number of occurrences by words
+	 * in each text file by checking the values of the sorted maps by searching 
+	 * the index with all the words uses where a word is not null
+	 * It stores them in s & t which are used to calculate the dot
+	 * and the totals are kept.
+	 * Using this it calculates the magnitude of s & t
+	 * and the cosine distance.
+	 * It then prints the cosine distance as a percentage
+	 */
 	protected static void CalculateDot(int length,LinkedHashMap<String, Integer> sorted1, LinkedHashMap<String, Integer>sorted2,
 			LinkedHashMap<Integer,String>words1, LinkedHashMap<Integer, String> words2)
 	{
@@ -22,43 +36,32 @@ public class Calculations {
 		double tMag = 0;
 		double dMag = 0;
 		double cosineDistance =0;
+		double cosPrecent=0;
 		ArrayList<String>usedShingles = new ArrayList<>();
 		int count = 0;
-		int j=1;
 		length +=1;
-		//System.out.println("sorted1 " + sorted1);
-		//System.out.println("sorted2 " + sorted2);
-		//System.out.println("sorted size1: " + sorted1.size());
-		//System.out.println("sorted size2: " + sorted2.size());
-		//System.out.println(length);
-		
+
 		for(i=0;i<length;i++)
 		{
 			word = words1.get(i);
 			
 			if(word != null && usedShingles.contains(word) == false)
 			{
-				
-				j++;
 				s = sorted1.get(word);
 				t = sorted2.get(word);
 				dot = s*t;
-			//	System.out.println("Word "+word + " Sorted1 word: " +  " S "+ s + " T " + t + " sorted1Word" + sorted1.get(word));
 				count = i;
 				sTotal += sorted1.get(word);
 				tTotal += t;
 				if(dot>1 && s!=0 && t!=0)
 				{
-			
 					dot =2;
 				}
-				dotTotal += dot;
-				
+				dotTotal += dot;				
 			}
 			usedShingles.add(word);
 			s=0;
 			t=0;
-			//System.out.println("Totals: S " + sTotal + " T "+tTotal+ " Dot Total "+ dotTotal+" Count "+ count);
 		}
 		System.out.println("TotalTotals: S " + sTotal + " T "+tTotal+ " Dot Total "+ dotTotal+" Count "+ count);
 		sMag = Math.sqrt(sTotal);
@@ -69,6 +72,8 @@ public class Calculations {
 		System.out.println("D Total: "+dMag);
 		System.out.println(dotTotal);
 		cosineDistance = dotTotal/(sMag*tMag);
-		System.out.println("Cosine Distance "+cosineDistance);
+		cosPrecent = cosineDistance * 100;
+		if(cosPrecent>100) cosPrecent = 100;
+		System.out.println("Cosine Distance "+cosPrecent+"%");
 	}
 }

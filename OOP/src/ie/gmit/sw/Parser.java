@@ -1,23 +1,26 @@
 package ie.gmit.sw;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class Parser {
-	//private ArrayList<String> al = new ArrayList<String>();
-	//private ArrayList<String> sh = new ArrayList<String>();
+	//Variables
 	String[] words = null;
-	int occurences1;
-	int occurences2;
-	int dotProduct;
-
+	
+	//parse File Method
+	/**
+	 * @author Antaine Ó Conghaile
+	 * @version 1.0
+	 * @param res
+	 * @return
+	 * Reads File res and Converts the File to a String
+	 * Than Removes any non Suitable Characters before
+	 * Finally Splitting the text into seperate words
+	 * Returns String[] version of Text File 
+	 */
 	public String[] parse(String res) {
 		try{
 			BufferedReader br = new BufferedReader(new FileReader(res));
-			
-			int i = 0;
-			int j = 0;
 			String line;// = null;
 			String testLine = "";
 			
@@ -29,12 +32,11 @@ public class Parser {
 			}
 			
 			words = testLine.split("\\W+");
-		//	System.out.println(Arrays.toString(words));
 			br.close();
-			//al = convertShingles(words);
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
+		//Returns String Array containing the textfile
 		return words;
 	}//end parse
 }//End of concatWords

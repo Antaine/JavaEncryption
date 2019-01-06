@@ -3,13 +3,25 @@ package ie.gmit.sw;
 import java.util.ArrayList;
 
 public class ConvertShingles {
+	//Variables
 	private ArrayList<String> al = new ArrayList<String>();
 	private ArrayList<String> sh = new ArrayList<String>();
+	
+	//Separates textfile into Shingles
+	/**
+	 * @author Antaine Ó Conghaile
+	 * @param words
+	 * @return
+	 * Counts Number of Strings in words[] And adds it to ArrayList al
+	 * Then makes it easily divisible by 3
+	 * by adding null elements and incrementing count if it its not
+	 * Then it passes the list and updated count to concatWords()
+	 * Where it groups words into groups of 3
+	 * and than returns them as new list
+	 */
 	public ArrayList<String> convertShingles(String[] words)
 	{
 		double count = 0;
-		double numberofShingles = 0;
-		double test = 0;
 		int i = 0;
 		int k =0;
 		double count2;
@@ -21,13 +33,6 @@ public class ConvertShingles {
 		        count ++;
 			}
 		}//End of for
-		
-		numberofShingles = (count-1)/3;
-		//System.out.println(count);
-		//System.out.println(numberofShingles);
-		test = (count) %3;
-		//System.out.println(test);
-		//System.out.println("Entered if  = 0");
 		i=0;
 		
 		count2 = count;
@@ -37,7 +42,6 @@ public class ConvertShingles {
 			count += -1;
 			al.add(words[k]);
 			k++;
-		//	System.out.println("");
 			i++;
 		}
 			
@@ -53,18 +57,22 @@ public class ConvertShingles {
 			al.add(null);
 			count2 += 2;
 		}
-		
-		//System.out.print(al);
-		String word1 = null;
-		String word2 = null;
-		String word3 = null;
 		sh = concatWords(al, count2);
-		//System.out.println(sh);
 		return sh;
 	}//End of convertShingles
 	
+	//Concats 3 words into one String
+	/**
+	 * @author Antaine Ó Conghaile
+	 * @param al
+	 * @param count
+	 * @return
+	 * Takes the list of words and the number of them and 
+	 * Sorts them into groups of 3.
+	 * Then the groups are added as one String into an ArrayList
+	 * The new ArrayList is then Returned
+	 */
 	public ArrayList<String> concatWords(ArrayList<String> al, double count)
-	
 {
 	ArrayList<String> al1 = new ArrayList<String>();
 	double count1 = count;
@@ -94,7 +102,6 @@ public class ConvertShingles {
 			k++;
 		}
 		shingleWord =wrd1+ " " + wrd2+ " " + wrd3;
-		//System.out.println(shingleWord);
 		
 		al1.add(shingleWord);
 		shingleWord = reset;
@@ -102,10 +109,6 @@ public class ConvertShingles {
 		wrd2 = reset;
 		wrd3 = reset;
 	}
-	//System.out.println(al1);
-	
 	return al1;
 	}//End of while
 }//End of concatWords
-	
-
